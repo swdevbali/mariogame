@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Test - Mario Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #87CEEB, #98FB98);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .music-btn {
+            background: #28a745;
+        }
+        .music-btn:hover {
+            background: #1e7e34;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Audio Test</h1>
+        <p>Test semua sound effects untuk Mario Game</p>
+        
+        <div class="status" id="status">
+            Audio Manager: Loading...
+        </div>
+        
+        <h3>Sound Effects:</h3>
+        <button onclick="testJump()">🦘 Jump Sound</button>
+        <button onclick="testCoin()">🪙 Coin Sound</button>
+        <button onclick="testEnemyDefeat()">👹 Enemy Defeat</button>
+        <button onclick="testHit()">💥 Hit Sound</button>
+        <button onclick="testShoot()">🔥 Mario Shoot</button>
+        <button onclick="testEnemyShoot()">💀 Enemy Shoot</button>
+        
+        <h3>Background Music:</h3>
+        <button class="music-btn" onclick="startMusic()">▶️ Start Music</button>
+        <button class="music-btn" onclick="stopMusic()">⏹️ Stop Music</button>
+        
+        <h3>Volume Controls:</h3>
+        <button onclick="toggleSFX()">🔊 Toggle SFX</button>
+        <button onclick="toggleMusic()">🎵 Toggle Music</button>
+        
+        <p style="margin-top: 30px; color: #666; font-size: 14px;">
+            <a href="index.html">← Kembali ke Game</a>
+        </p>
+    </div>
+
+    <script src="audio.js"></script>
+    <script>
+        // Wait for audio manager to load
+        function checkAudioManager() {
+            const status = document.getElementById('status');
+            if (window.audioManager) {
+                status.textContent = 'Audio Manager: Ready ✅';
+                status.style.background = '#d4edda';
+                status.style.color = '#155724';
+            } else {
+                status.textContent = 'Audio Manager: Not Ready ❌';
+                status.style.background = '#f8d7da';
+                status.style.color = '#721c24';
+                setTimeout(checkAudioManager, 100);
+            }
+        }
+        
+        // Test functions
+        function testJump() {
+            if (window.audioManager) {
+                window.audioManager.playJumpSound();
+                console.log('Jump sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function testCoin() {
+            if (window.audioManager) {
+                window.audioManager.playCoinSound();
+                console.log('Coin sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function testEnemyDefeat() {
+            if (window.audioManager) {
+                window.audioManager.playEnemyDefeatSound();
+                console.log('Enemy defeat sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function testHit() {
+            if (window.audioManager) {
+                window.audioManager.playHitSound();
+                console.log('Hit sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function testShoot() {
+            if (window.audioManager) {
+                window.audioManager.playShootSound();
+                console.log('Mario shoot sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function testEnemyShoot() {
+            if (window.audioManager) {
+                window.audioManager.playEnemyShootSound();
+                console.log('Enemy shoot sound played');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function startMusic() {
+            if (window.audioManager) {
+                window.audioManager.startBackgroundMusic();
+                console.log('Background music started');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function stopMusic() {
+            if (window.audioManager) {
+                window.audioManager.stopBackgroundMusic();
+                console.log('Background music stopped');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function toggleSFX() {
+            if (window.audioManager) {
+                window.audioManager.toggleSounds();
+                console.log('SFX toggled');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        function toggleMusic() {
+            if (window.audioManager) {
+                window.audioManager.toggleMusic();
+                console.log('Music toggled');
+            } else {
+                alert('Audio Manager not ready!');
+            }
+        }
+        
+        // Start checking
+        checkAudioManager();
+        
+        // Enable audio context on first user interaction
+        document.addEventListener('click', () => {
+            if (window.audioManager) {
+                window.audioManager.resumeContext();
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>

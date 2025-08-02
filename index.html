@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Mario Game - Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Super Mario Mobile</h1>
+            <div class="score">Score: <span id="score">0</span></div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Mobile Controls -->
+        <div class="mobile-controls">
+            <div class="left-controls">
+                <button id="leftBtn" class="control-btn">←</button>
+                <button id="rightBtn" class="control-btn">→</button>
+            </div>
+            <div class="right-controls">
+                <button id="jumpBtn" class="control-btn jump">JUMP</button>
+                <button id="shootBtn" class="control-btn shoot">🔥</button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <p>Gerakkan Mario dengan tombol panah, JUMP untuk melompat, dan 🔥 untuk menembak!</p>
+            <p>Kumpulkan koin, hindari musuh, dan gunakan peluru untuk melawan!</p>
+        </div>
+        
+        <!-- Audio Controls -->
+        <div class="audio-controls">
+            <button id="soundToggle" class="audio-btn">🔊</button>
+            <button id="musicToggle" class="audio-btn">🎵</button>
+        </div>
+    </div>
+
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
